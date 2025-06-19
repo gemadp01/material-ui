@@ -7,8 +7,11 @@ import {
   CardActions,
   CardContent,
   Container,
+  Fade,
+  Grow,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 
 const StyledButton = styled(Button)`
   &&& {
@@ -38,6 +41,13 @@ const ButtonPrimary = styled(Button)(({ theme }) => ({
 }));
 
 export default function App() {
+  // state react
+  const [isCheck, setCheck] = useState(false);
+
+  const handleChange = () => {
+    setCheck(!isCheck);
+  };
+
   return (
     <>
       <Container maxWidth="sm">
@@ -62,7 +72,22 @@ export default function App() {
             h1. Heading
           </Typography>
         </Box>
-        <BasicCard />
+        <Button onClick={handleChange}>Show Card</Button>
+        <Fade in={isCheck}>
+          <div>
+            <BasicCard />
+          </div>
+        </Fade>
+        <Grow
+          in={isCheck}
+          style={{ transformOrigin: "0 0 0" }}
+          {...(isCheck ? { timeout: 1000 } : {})}
+        >
+          <div>
+            <h1>Title Card</h1>
+            <BasicCard />
+          </div>
+        </Grow>
       </Container>
     </>
   );
