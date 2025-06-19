@@ -1,5 +1,14 @@
 import styled from "styled-components";
-import { Box, Button, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardActions,
+  CardContent,
+  Container,
+  Typography,
+} from "@mui/material";
 
 const StyledButton = styled(Button)`
   &&& {
@@ -12,7 +21,15 @@ const StyledButton = styled(Button)`
   }
 `;
 
-function App() {
+const StyledHeading = styled(Typography)`
+  color: red;
+`;
+
+const ButtonPrimary = styled(Button)(({ theme }) => ({
+  color: theme.palette.secondary.main,
+}));
+
+export default function App() {
   return (
     <>
       <Container maxWidth="sm">
@@ -20,14 +37,60 @@ function App() {
           <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
             Material UI Vite.js example
           </Typography>
+          <StyledHeading>Warna Merah</StyledHeading>
           <StyledButton variant="contained">
             Styled Material-UI Button
           </StyledButton>
           <Button variant="contained">Material UI</Button>
+          <ButtonPrimary>Material UI</ButtonPrimary>
+          <ButtonGroup variant="contained" aria-label="Basic button group">
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
         </Box>
+        <Box>
+          <Typography variant="h1" component="h2">
+            h1. Heading
+          </Typography>
+        </Box>
+        <BasicCard />
       </Container>
     </>
   );
 }
 
-export default App;
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+  >
+    •
+  </Box>
+);
+
+function BasicCard() {
+  return (
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Word of the Day
+        </Typography>
+        <Typography variant="h5" component="div">
+          be{bull}nev{bull}o{bull}lent
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          adjective
+        </Typography>
+        <Typography variant="body2">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+  );
+}
