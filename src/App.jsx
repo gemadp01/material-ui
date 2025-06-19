@@ -26,7 +26,15 @@ const StyledHeading = styled(Typography)`
 `;
 
 const ButtonPrimary = styled(Button)(({ theme }) => ({
-  color: theme.palette.secondary.main,
+  color: "black",
+  backgroundColor: theme.palette.primary.main,
+  [theme.breakpoints.up("md")]: {
+    backgroundColor: "#3700b3",
+    color: "white",
+    "&:hover": {
+      backgroundColor: theme.palette.error.main,
+    },
+  },
 }));
 
 export default function App() {
