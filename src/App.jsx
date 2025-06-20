@@ -1,7 +1,6 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { Button, Card, CardContent, Stack, styled } from "@mui/material";
+import { Card, CardContent, Stack, styled } from "@mui/material";
 
 const ContainerFull = styled(Container)`
   height: 100vh;
@@ -14,22 +13,45 @@ const Label = styled("label")(({ theme }) => ({
   backgroundColor: theme.palette.yellow,
   borderRadius: "4px",
   padding: "4px 12px",
-  fontSize: "14px",
+  fontSize: "12px",
   fontWeight: "700",
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "14px",
+  },
 }));
 
 const Image = styled("img")`
-  margin-bottom: 24px;
+  marginbottom: "24px";
+  width: "100%";
 `;
 
-const Title = styled(Typography)`
-  font-size: 24px;
-  font-weight: bold;
-`;
+const Title = styled(Typography)(({ theme }) => ({
+  fontSize: "20px",
+  fontWeight: "700",
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "24px",
+  },
+  "&:hover": {
+    color: theme.palette.yellow,
+    cursor: "pointer",
+  },
+}));
+
+const Date = styled(Typography)(({ theme }) => ({
+  fontSize: "12px",
+  fontWeight: "400",
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "14px",
+  },
+}));
 
 const Description = styled(Typography)(({ theme }) => ({
-  fontSize: "14px",
+  fontSize: "12px",
   color: theme.palette.grey,
+  fontWeight: "500",
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "14px",
+  },
 }));
 
 const ProfileName = styled(Typography)`
@@ -61,9 +83,7 @@ export default function App() {
             }}
           >
             <Label>Learning</Label>
-            <Typography sx={{ fontSize: "14px" }}>
-              Published 21 Dec 2023
-            </Typography>
+            <Date>Published 21 Dec 2023</Date>
             <Title variant="h1">HTML & CSS foundations</Title>
             <Description>
               These languages are the backbone of every website, defining
